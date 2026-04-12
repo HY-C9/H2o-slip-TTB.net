@@ -50,17 +50,12 @@ function padZero(number) {
 
 function formatDate(date) {
     if (!date || date === '-') return '-';
-    const options = { day: 'numeric', month: 'short', year: '2-digit' };
-    let formattedDate = new Date(date).toLocaleDateString('th-TH', options);
-    formattedDate = formattedDate.replace(/ /g, ' ').replace(/\./g, '');
+    const d = new Date(date);
+    const day = d.getDate().toString().padStart(2, '0');
     const months = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
-    const parts = formattedDate.split(' ');
-    if (parts.length < 3) return formattedDate;
-    const day = padZero(parts[0]);
-    const month = months[new Date(date).getMonth()];
-    let year = parts[2];
-    year = `25${year}`;
-    return `${day} ${month} ${year}`;
+    const month = months[d.getMonth()];
+    const yearBE = (d.getFullYear() + 543).toString().slice(-2); 
+    return `${day} ${month} ${yearBE}`;
 }
 
 function generateUniqueID() {
