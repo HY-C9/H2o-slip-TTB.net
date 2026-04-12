@@ -1,6 +1,3 @@
-// ==========================================
-// 1. โหลดเฉพาะฟอนต์ที่ใช้สำหรับ TTB
-// ==========================================
 function loadFonts() {
     const fonts = [
         new FontFace('DXTTBBold', 'url(assets/fonts/DX-TTB-bold.woff)'),
